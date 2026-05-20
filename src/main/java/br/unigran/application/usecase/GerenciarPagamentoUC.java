@@ -36,15 +36,22 @@ public class GerenciarPagamentoUC {
         return repository.listar("From Pagamento", null);
     }
 
-    public void valida(Pagamento pagamento) throws Exception {
-  
+public void valida(Pagamento pagamento) throws Exception {
 
-        if (pagamento.getValor() <= 0) {
-            throw new Exception("Valor inválido");
-        }
-
-        if (atualizar && pagamento.getId() == null) {
-            throw new Exception("Id vazio");
-        }
+    if (pagamento.getTipo() == null || pagamento.getTipo().isBlank()) {
+        throw new Exception("Tipo de pagamento vazio");
     }
+
+    if (pagamento.getValor() <= 0) {
+        throw new Exception("Valor inválido");
+    }
+
+    if (pagamento.getVenda() == null) {
+        throw new Exception("Venda vazia");
+    }
+
+    if (atualizar && pagamento.getId() == null) {
+        throw new Exception("Id vazio");
+    }
+}
 }

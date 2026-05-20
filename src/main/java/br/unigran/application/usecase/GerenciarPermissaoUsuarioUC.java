@@ -43,12 +43,22 @@ public class GerenciarPermissaoUsuarioUC {
         return repository.listar("From PermissaoUsuario", null);
     }
 
-    public void valida(PermissaoUsuario permissao) throws Exception {
+public void valida(PermissaoUsuario permissao) throws Exception {
 
-
-
-        if (atualizar && permissao.getId() == null) {
-            throw new Exception("Id vazio");
-        }
+    if (permissao.getUsuarioCadastrado() == null) {
+        throw new Exception("Usuário cadastrado vazio");
     }
+
+    if (permissao.getUsuarioCadastro() == null) {
+        throw new Exception("Usuário de cadastro vazio");
+    }
+
+    if (permissao.getTipoPermissoes() == null) {
+        throw new Exception("Tipo de permissão vazio");
+    }
+
+    if (atualizar && permissao.getId() == null) {
+        throw new Exception("Id vazio");
+    }
+}
 }
