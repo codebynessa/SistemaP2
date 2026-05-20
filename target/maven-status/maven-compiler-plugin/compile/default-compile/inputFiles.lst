@@ -1,20 +1,51 @@
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/MovimentacaoEstoque.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Categoria.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/ItemEntrada.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/infra/persistence/JPAUtil.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Cliente.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/infra/repository/CategoriaRepository.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Venda.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Fornecedor.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/infra/persistence/JDBCUtil.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/infra/repository/AbstractRepository.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/PermissaoUsuario.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Usuario.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/app/Principal/SistemaP2.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/ItemVenda.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Produto.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/repository/CategoriaRepository.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/Pagamento.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/repository/AbstractRepository.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/EntradaProduto.java
-/home/andre/Vídeos/P2-Pablo/src/main/java/br/unigran/domain/entity/TipoPermissoes.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\ProdutoRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Fornecedor.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\PermissaoUsuario.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\CategoriaRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\EntradaProdutoRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Produto.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Venda.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\FornecedorRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarPagamentoUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\EntradaProduto.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\PagamentoRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\persistence\JPAUtil.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\ItemEntradaRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\app\Principal\SistemaP2.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarProdutoUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\ItemEntradaRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\ClienteRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarClienteUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\MovimentacaoEstoqueRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\CategoriaRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\EntradaProdutoRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\UsuarioRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\PagamentoRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\AbstractRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\TipoPermissoesRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarUsuarioUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\VendaRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Categoria.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarItemEntradaUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\ItemVenda.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\ProdutoRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\VendaRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarFornecedorUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Usuario.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\TipoPermissoes.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\FornecedorRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarPermissaoUsuarioUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\MovimentacaoEstoque.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Pagamento.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\MovimentacaoEstoqueRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\PermissaoUsuarioRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarCategoriaUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\TipoPermissoesRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarEntradaProdutoUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarTipoPermissoesUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Cliente.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarMovimentacaoEstoqueUC.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\UsuarioRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\ItemEntrada.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\PermissaoUsuarioRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\ClienteRepository.java

@@ -8,3 +8,4 @@ public interface AbstractRepository {
     public  List listar(String quere, String[] parametros);
     public  Object findByID(Integer id);
 }
+ 

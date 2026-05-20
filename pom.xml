@@ -75,4 +75,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>P2-Sistema</name>
 </project>
