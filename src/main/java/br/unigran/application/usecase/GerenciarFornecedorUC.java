@@ -14,7 +14,11 @@ import br.unigran.infra.repository.FornecedorRepositoryimpl;
  */
 public class GerenciarFornecedorUC {
 
-    FornecedorRepository repository = new FornecedorRepositoryimpl();
+    private final FornecedorRepository repository;
+
+    public GerenciarFornecedorUC() {
+        this.repository = new FornecedorRepositoryimpl();
+    }
 
     public void salvarFornecedor(Fornecedor fornecedor) throws Exception {
 

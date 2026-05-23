@@ -14,10 +14,13 @@ import java.util.List;
  * @author vanes
  */
 public class GerenciarUsuarioUC {
-    
 
     private Boolean atualizar = false;
-    private final UsuarioRepository repository = new UsuarioRepositoryimpl();
+    private final UsuarioRepository repository;
+
+    public GerenciarUsuarioUC() {
+        this.repository = new UsuarioRepositoryimpl();
+    }
 
     public String salvarUsuario(Usuario usuario) throws Exception {
 

@@ -14,8 +14,13 @@ import java.util.List;
  * @author vanes
  */
 public class GerenciarClienteUC {
-  private Boolean atualizar = false;
-    private final ClienteRepository repository = new ClienteRepositoryimpl();
+    
+      private Boolean atualizar = false;
+    private final ClienteRepository repository;
+
+    public GerenciarClienteUC() {
+        this.repository = new ClienteRepositoryimpl();
+    }
 
     public String salvarCliente(Cliente cliente) throws Exception {
         atualizar = false;

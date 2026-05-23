@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.unigran.application.usecase;
 
 import br.unigran.domain.entity.Categoria;
@@ -12,19 +8,18 @@ import br.unigran.infra.repository.CategoriaRepositoryimpl;
 import br.unigran.infra.repository.ProdutoRepositoryimpl;
 import java.util.List;
 
-/**
- *
- * @author andre
- */
 public class GerenciarProdutoUC {
 
-    ProdutoRepository repository = new ProdutoRepositoryimpl();
-    CategoriaRepository categoriaRepository = new CategoriaRepositoryimpl();
+    private final ProdutoRepository repository;
+    private final CategoriaRepository categoriaRepository;
 
-    List<Categoria> categorias;
+    public GerenciarProdutoUC() {
+        this.repository = new ProdutoRepositoryimpl();
+        this.categoriaRepository = new CategoriaRepositoryimpl();
+    }
 
     public void cadastrarProduto(Produto produto) throws Exception {
-        categorias = categoriaRepository.listarTodos();
+        List<Categoria> categorias = categoriaRepository.listarTodos();
 
         if (produto.getCategoria() == null) {
             throw new Exception("Categoria vazia");

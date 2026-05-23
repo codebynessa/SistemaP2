@@ -1,6 +1,7 @@
 br\unigran\domain\repositories\AbstractRepository.class
 br\unigran\application\usecase\GerenciarItemEntradaUC.class
 br\unigran\application\usecase\GerenciarProdutoUC.class
+br\unigran\interfaces\controllers\ProdutoController.class
 br\unigran\domain\entity\Usuario.class
 br\unigran\application\usecase\GerenciarUsuarioUC.class
 br\unigran\domain\entity\ItemEntrada.class
@@ -48,4 +49,5 @@ br\unigran\infra\repository\PagamentoRepositoryimpl.class
 br\unigran\domain\entity\Cliente.class
 br\unigran\domain\entity\Produto.class
 br\unigran\domain\repositories\TipoPermissoesRepository.class
+br\unigran\application\dto\ProdutoDTO.class
 br\unigran\domain\entity\Pagamento.class

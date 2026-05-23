@@ -8,7 +8,11 @@ import java.util.List;
 public class GerenciarCategoriaUC {
 
     private Boolean atualizar = false;
-    private final CategoriaRepository repository = new CategoriaRepositoryimpl();
+    private final CategoriaRepository repository;
+
+    public GerenciarCategoriaUC() {
+        this.repository = new CategoriaRepositoryimpl();
+    }
 
     public String salvarCategoria(Categoria categoria) throws Exception {
         atualizar = false;

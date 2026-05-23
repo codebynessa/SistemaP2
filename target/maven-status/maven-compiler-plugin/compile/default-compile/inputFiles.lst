@@ -15,6 +15,7 @@ C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarProdutoUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\ItemEntradaRepository.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\ClienteRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\dto\ProdutoDTO.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarClienteUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\MovimentacaoEstoqueRepository.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\CategoriaRepositoryimpl.java
@@ -26,6 +27,7 @@ C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarUsuarioUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\VendaRepositoryimpl.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Categoria.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\ProdutoController.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarItemEntradaUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\ItemVenda.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\ProdutoRepository.java
