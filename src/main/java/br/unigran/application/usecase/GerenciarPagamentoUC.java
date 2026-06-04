@@ -16,7 +16,11 @@ import java.util.List;
 public class GerenciarPagamentoUC {
 
     private Boolean atualizar = false;
-    private final PagamentoRepository repository = new PagamentoRepositoryimpl();
+    private final PagamentoRepository repository;
+
+    public GerenciarPagamentoUC() {
+        this.repository = new PagamentoRepositoryimpl();
+    }
 
     public String salvarPagamento(Pagamento pagamento) throws Exception {
         atualizar = false;

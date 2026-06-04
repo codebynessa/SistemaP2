@@ -1,12 +1,14 @@
 package br.unigran.app.Principal;
 
-import br.unigran.infra.persistence.JPAUtil;
+import br.unigran.interfaces.ui.screens.Principal;
+
 
 
 public class SistemaP2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        JPAUtil.getInstace();
+
+        new Principal().setVisible(true);
+
     }
 }

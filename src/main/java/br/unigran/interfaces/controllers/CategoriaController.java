@@ -4,10 +4,21 @@
  */
 package br.unigran.interfaces.controllers;
 
+import br.unigran.application.dto.CategoriaDTO;
+import br.unigran.application.usecase.GerenciarCategoriaUC;
+
 /**
  *
  * @author vanes
  */
 public class CategoriaController {
     
+
+    static GerenciarCategoriaUC uc = new GerenciarCategoriaUC();
+
+    public static void salvar(CategoriaDTO dto) throws Exception {
+
+        uc.salvarCategoria(dto.build());
+
+    }
 }

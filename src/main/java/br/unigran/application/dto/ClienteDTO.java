@@ -11,9 +11,17 @@ import br.unigran.domain.entity.Cliente;
  * @author vanes
  */
 public class ClienteDTO {
-    
+
     public String nome;
     public String telefone;
+
+    public ClienteDTO(String text) {
+    }
+
+    public ClienteDTO(String nome, String telefone) {
+        this.nome = nome;
+        this.telefone = telefone;
+    }
 
     public Cliente build() {
         Cliente c = new Cliente();
