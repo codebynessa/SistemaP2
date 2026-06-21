@@ -40,9 +40,9 @@ public class GerenciarItemEntradaUC {
         return "Item de entrada atualizado com sucesso";
     }
 
-    public List listarTodos() {
-        return repository.listar("From ItemEntrada", null);
-    }
+public List listarTodos() {
+    return repository.listarTodos();
+}
 
 public void valida(ItemEntrada itemEntrada) throws Exception {
 

@@ -40,6 +40,6 @@ public class TipoPermissoesRepositoryimpl implements TipoPermissoesRepository {
 
     @Override
     public List<TipoPermissoes> listarTodos() {
-        return dao.listar("From TipoPermissoes", null);
+return dao.listar("SELECT t FROM TipoPermissoes t", null); 
     }
 }

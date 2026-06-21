@@ -23,16 +23,15 @@ public class ProdutoRepositoryimpl implements ProdutoRepository {
         dao.salvar(produto);
     }
 
-    @Override
-    public List<Produto> listarTodos() {
-        return dao.listar("From Produto", null);
-    }
-
+@Override
+public List<Produto> listarTodos() {
+    return dao.listar("SELECT p FROM Produto p", null);
+}
     @Override
     public List<Produto> findProdutosByCategoria(Categoria categoria) {
         return dao.listar(
-                "From Produto p where p.categoria = ?0",
-                new String[]{String.valueOf(categoria.getId())}
+            "SELECT p FROM Produto p WHERE p.categoria.id = :idCategoria",
+            new String[]{"idCategoria", String.valueOf(categoria.getId())}
         );
     }
 

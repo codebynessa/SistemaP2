@@ -6,6 +6,7 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.CategoriaDTO;
 import br.unigran.application.usecase.GerenciarCategoriaUC;
+import java.util.List;
 
 /**
  *
@@ -19,6 +20,8 @@ public class CategoriaController {
     public static void salvar(CategoriaDTO dto) throws Exception {
 
         uc.salvarCategoria(dto.build());
-
+    }
+        public static List listarTodos() throws Exception {
+        return uc.listarTodos();
     }
 }

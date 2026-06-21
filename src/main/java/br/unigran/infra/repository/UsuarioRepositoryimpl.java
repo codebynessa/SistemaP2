@@ -39,6 +39,19 @@ public class UsuarioRepositoryimpl implements UsuarioRepository {
 
     @Override
     public List<Usuario> listarTodos() {
-        return dao.listar("From Usuario", null);
+        return dao.listar("SELECT u FROM Usuario u", null);
     }
+    @Override
+public Usuario buscarPorLogin(String login) {
+    List<Usuario> usuarios = dao.listar(
+            "SELECT u FROM Usuario u WHERE u.login = :login",
+            new String[]{"login", login}
+    );
+
+    if (usuarios == null || usuarios.isEmpty()) {
+        return null;
+    }
+
+    return usuarios.get(0);
+}
 }

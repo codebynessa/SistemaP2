@@ -6,6 +6,7 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.ClienteDTO;
 import br.unigran.application.usecase.GerenciarClienteUC;
+import java.util.List;
 
 /**
  *
@@ -16,7 +17,12 @@ public class ClienteController {
 
     static GerenciarClienteUC uc = new GerenciarClienteUC();
 
+
     public static void salvar(ClienteDTO dto) throws Exception {
         uc.salvarCliente(dto.build());
+    }
+
+    public static List listarTodos() {
+        return uc.listarTodos();
     }
 }

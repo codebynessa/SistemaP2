@@ -39,4 +39,7 @@ public class GerenciarProdutoUC {
     public List<Produto> listarByCategoria(Categoria categoria) {
         return repository.findProdutosByCategoria(categoria);
     }
+    public List<Produto> listarTodos() {
+    return repository.listarTodos();
+}
 }

@@ -25,8 +25,7 @@ public class EntradaProdutoRepositoryimpl implements EntradaProdutoRepository {
 
     @Override
     public List<EntradaProduto> listarTodos() {
-        return dao.listar("From EntradaProduto", null);
-    }
+return dao.listar("SELECT e FROM EntradaProduto e", null);    }
 
     @Override
     public void remover(Object o) {

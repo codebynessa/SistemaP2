@@ -6,6 +6,7 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.UsuarioDTO;
 import br.unigran.application.usecase.GerenciarUsuarioUC;
+import java.util.List;
 
 /**
  *
@@ -13,11 +14,13 @@ import br.unigran.application.usecase.GerenciarUsuarioUC;
  */
 public class UsuarioController {
 
-    static GerenciarUsuarioUC uc = new GerenciarUsuarioUC();
+  static GerenciarUsuarioUC uc = new GerenciarUsuarioUC();
 
     public static void salvar(UsuarioDTO dto) throws Exception {
-
         uc.salvarUsuario(dto.build());
+    }
 
+    public static List listarTodos() {
+        return uc.listarTodos();
     }
 }

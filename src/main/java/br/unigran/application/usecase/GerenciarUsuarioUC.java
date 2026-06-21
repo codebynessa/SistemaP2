@@ -44,8 +44,8 @@ public class GerenciarUsuarioUC {
         return "Usuário atualizado com sucesso";
     }
 
-    public List listarTodos() {
-        return repository.listar("From Usuario", null);
+    public List<Usuario> listarTodos() {
+        return repository.listarTodos();
     }
 
     public void valida(Usuario usuario) throws Exception {

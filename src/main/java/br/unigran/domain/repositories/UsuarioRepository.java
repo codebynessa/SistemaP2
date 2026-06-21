@@ -13,5 +13,6 @@ import java.util.List;
  */
 public interface UsuarioRepository extends AbstractRepository {
     public List<Usuario> listarTodos();
-    
+    public Usuario buscarPorLogin(String login);
+
 }

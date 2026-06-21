@@ -4,8 +4,10 @@ import br.unigran.domain.entity.Categoria;
 import br.unigran.infra.persistence.JPAUtil;
 import java.util.List;
 
-public class CategoriaRepositoryimpl implements br.unigran.domain.repositories.CategoriaRepository{
-    JPAUtil dao=JPAUtil.getInstace();
+public class CategoriaRepositoryimpl implements br.unigran.domain.repositories.CategoriaRepository {
+
+    JPAUtil dao = JPAUtil.getInstace();
+
     @Override
     public void salvar(Object categoria) {
         dao.salvar(categoria);
@@ -13,7 +15,7 @@ public class CategoriaRepositoryimpl implements br.unigran.domain.repositories.C
 
     @Override
     public List<Categoria> listarTodos() {
-       return dao.listar("From Categoria", null);
+        return dao.listar("SELECT c FROM Categoria c", null);
     }
 
     @Override
@@ -23,12 +25,12 @@ public class CategoriaRepositoryimpl implements br.unigran.domain.repositories.C
 
     @Override
     public List listar(String quere, String[] parametros) {
-       return dao.listar(quere, parametros);
-               }
+        return dao.listar(quere, parametros);
+    }
 
     @Override
     public Object findByID(Integer id) {
-       return dao.findById(id, Categoria.class);
+        return dao.findById(id, Categoria.class);
     }
-    
+
 }

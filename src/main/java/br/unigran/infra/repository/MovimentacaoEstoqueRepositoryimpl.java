@@ -24,7 +24,7 @@ public class MovimentacaoEstoqueRepositoryimpl implements MovimentacaoEstoqueRep
 
     @Override
     public List<MovimentacaoEstoque> listarTodos() {
-        return dao.listar("From MovimentacaoEstoque", null);
+        return dao.listar("SELECT m FROM MovimentacaoEstoque m", null);
     }
 
     @Override

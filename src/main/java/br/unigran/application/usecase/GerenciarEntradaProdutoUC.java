@@ -54,4 +54,7 @@ public class GerenciarEntradaProdutoUC {
 
         repository.remover(entradaProduto);
     }
+    public java.util.List<EntradaProduto> listarTodos() {
+    return repository.listarTodos();
+}
 }

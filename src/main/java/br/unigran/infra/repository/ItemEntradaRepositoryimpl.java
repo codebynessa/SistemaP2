@@ -39,6 +39,5 @@ public class ItemEntradaRepositoryimpl implements ItemEntradaRepository {
 
     @Override
     public List<ItemEntrada> listarTodos() {
-        return dao.listar("From ItemEntrada", null);
-    }
+return dao.listar("SELECT i FROM ItemEntrada i", null);    }
 }

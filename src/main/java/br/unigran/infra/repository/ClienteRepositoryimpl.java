@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.unigran.infra.repository;
+
 import br.unigran.domain.entity.Cliente;
 import br.unigran.infra.persistence.JPAUtil;
 import java.util.List;
+
 /**
  *
  * @author vanes
  */
-
 
 public class ClienteRepositoryimpl implements br.unigran.domain.repositories.ClienteRepository {
 
@@ -23,7 +24,7 @@ public class ClienteRepositoryimpl implements br.unigran.domain.repositories.Cli
 
     @Override
     public List<Cliente> listarTodos() {
-        return dao.listar("From Cliente", null);
+        return dao.listar("SELECT c FROM Cliente c", null);
     }
 
     @Override

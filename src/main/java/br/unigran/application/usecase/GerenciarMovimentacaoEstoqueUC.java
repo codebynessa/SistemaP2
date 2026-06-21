@@ -18,24 +18,29 @@ public class GerenciarMovimentacaoEstoqueUC {
 
     public void salvarMovimentacao(MovimentacaoEstoque movimentacao) throws Exception {
 
-        if (movimentacao.getDataMovimentacao() == null) {
-            throw new Exception("Data da movimentação vazia");
-        }
-
-        if (movimentacao.getTipo() == null || movimentacao.getTipo().isBlank()) {
-            throw new Exception("Tipo vazio");
-        }
-
-        if (movimentacao.getQuantidade() <= 0) {
-            throw new Exception("Quantidade inválida");
-        }
-
-        if (movimentacao.getProduto() == null || movimentacao.getProduto().getId() == null) {
-            throw new Exception("Produto vazio");
-        }
-
-        repository.salvar(movimentacao);
+    if (movimentacao.getDataMovimentacao() == null) {
+        throw new Exception("Data da movimentação vazia");
     }
+
+    if (movimentacao.getTipo() == null || movimentacao.getTipo().isBlank()) {
+        throw new Exception("Tipo vazio");
+    }
+
+    if (!movimentacao.getTipo().equalsIgnoreCase("ENTRADA")
+            && !movimentacao.getTipo().equalsIgnoreCase("SAIDA")) {
+        throw new Exception("Tipo deve ser ENTRADA ou SAIDA");
+    }
+
+    if (movimentacao.getQuantidade() <= 0) {
+        throw new Exception("Quantidade inválida");
+    }
+
+    if (movimentacao.getProduto() == null || movimentacao.getProduto().getId() == null) {
+        throw new Exception("Produto vazio");
+    }
+
+    repository.salvar(movimentacao);
+}
 
     public void atualizar(MovimentacaoEstoque movimentacao) throws Exception {
 
@@ -53,5 +58,9 @@ public class GerenciarMovimentacaoEstoqueUC {
         }
 
         repository.remover(movimentacao);
+    }
+
+    public java.util.List<MovimentacaoEstoque> listarTodos() {
+        return repository.listarTodos();
     }
 }

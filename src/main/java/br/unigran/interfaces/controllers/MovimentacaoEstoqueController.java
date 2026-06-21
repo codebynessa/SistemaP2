@@ -3,6 +3,7 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.MovimentacaoEstoqueDTO;
 import br.unigran.application.usecase.GerenciarMovimentacaoEstoqueUC;
+import java.util.List;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,4 +22,7 @@ public class MovimentacaoEstoqueController {
     public static void salvar(MovimentacaoEstoqueDTO dto) throws Exception {
         uc.salvarMovimentacao(dto.build());
     }
+    public static List listarTodos() {
+    return uc.listarTodos();
+}
 }

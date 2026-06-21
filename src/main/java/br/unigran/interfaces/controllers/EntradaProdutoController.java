@@ -6,6 +6,7 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.EntradaProdutoDTO;
 import br.unigran.application.usecase.GerenciarEntradaProdutoUC;
+import java.util.List;
 
 /**
  *
@@ -14,9 +15,13 @@ import br.unigran.application.usecase.GerenciarEntradaProdutoUC;
 public class EntradaProdutoController {
     
 
-    static GerenciarEntradaProdutoUC uc = new GerenciarEntradaProdutoUC();
+ static GerenciarEntradaProdutoUC uc = new GerenciarEntradaProdutoUC();
 
     public static void salvar(EntradaProdutoDTO dto) throws Exception {
         uc.salvarEntradaProduto(dto.build());
+    }
+
+    public static List listarTodos() {
+        return uc.listarTodos();
     }
 }

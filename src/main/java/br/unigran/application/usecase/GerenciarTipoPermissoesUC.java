@@ -32,9 +32,9 @@ public class GerenciarTipoPermissoesUC {
         return "Tipo de permissão atualizado com sucesso";
     }
 
-    public List listarTodos() {
-        return repository.listar("From TipoPermissoes", null);
-    }
+public List<TipoPermissoes> listarTodos() {
+    return repository.listarTodos();
+}
 
     public void valida(TipoPermissoes tipoPermissao) throws Exception {
         if (tipoPermissao.getDescricao() == null || tipoPermissao.getDescricao().isBlank()) {

@@ -39,9 +39,9 @@ public class GerenciarPermissaoUsuarioUC {
         return "Permissão atualizada com sucesso";
     }
 
-    public List listarTodos() {
-        return repository.listar("From PermissaoUsuario", null);
-    }
+public List listarTodos() {
+    return repository.listarTodos();
+}
 
 public void valida(PermissaoUsuario permissao) throws Exception {
 

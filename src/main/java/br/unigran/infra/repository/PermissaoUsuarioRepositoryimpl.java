@@ -39,6 +39,5 @@ public class PermissaoUsuarioRepositoryimpl implements PermissaoUsuarioRepositor
 
     @Override
     public List<PermissaoUsuario> listarTodos() {
-        return dao.listar("From PermissaoUsuario", null);
-    }
+return dao.listar("SELECT p FROM PermissaoUsuario p", null);    }
 }

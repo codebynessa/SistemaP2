@@ -54,4 +54,7 @@ public class GerenciarFornecedorUC {
 
         repository.remover(fornecedor);
     }
+    public java.util.List<Fornecedor> listarTodos() {
+    return repository.listarTodos();
+}
 }

@@ -4,10 +4,10 @@
  */
 package br.unigran.infra.repository;
 
-
 import br.unigran.domain.entity.Fornecedor;
 import br.unigran.infra.persistence.JPAUtil;
 import java.util.List;
+
 /**
  *
  * @author vanes
@@ -24,7 +24,7 @@ public class FornecedorRepositoryimpl implements br.unigran.domain.repositories.
 
     @Override
     public List<Fornecedor> listarTodos() {
-        return dao.listar("From Fornecedor", null);
+        return dao.listar("SELECT f FROM Fornecedor f", null);
     }
 
     @Override
