@@ -1,18 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.LoginDTO;
-import br.unigran.interfaces.controllers.Sessao;
+import br.unigran.application.services.Sessao;
 import br.unigran.application.usecase.LoginUC;
 import br.unigran.domain.entity.Usuario;
 
-/**
- *
- * @author vanes
- */
 public class LoginController {
     
     private static LoginUC uc = new LoginUC();
@@ -24,6 +16,6 @@ public class LoginController {
     }
 
     public static void sair() {
-        Sessao.getInstance().sair();
+        Sessao.getInstance().limpar();
     }
 }

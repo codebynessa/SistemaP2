@@ -10,7 +10,7 @@ import br.unigran.interfaces.controllers.ProdutoController;
  * @author vanes
  */
 public class CadastroProduto extends javax.swing.JDialog {
-    
+    private Integer produtoId = null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroProduto.class.getName());
 
     /**
@@ -19,7 +19,27 @@ public class CadastroProduto extends javax.swing.JDialog {
     public CadastroProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+            setTitle("Cadastro de Produto");
+    setLocationRelativeTo(null);
+        
     }
+    public CadastroProduto(java.awt.Frame parent, boolean modal, Integer id, String nome, String descricao, String preco, String idCategoria, String estoque) {
+    super(parent, modal);
+    initComponents();
+
+    this.produtoId = id;
+
+    txtNome.setText(nome);
+    txtDescricao.setText(descricao);
+    txtPreco.setText(preco);
+    txtIdCategoria.setText(idCategoria);
+    txtEstoque.setText(estoque);
+
+    btnSalvar1.setText("Atualizar");
+
+    setTitle("Editar Produto");
+    setLocationRelativeTo(null);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,14 +64,20 @@ public class CadastroProduto extends javax.swing.JDialog {
         txtEstoque = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 102, 255));
+        setFocusTraversalPolicyProvider(true);
+        setForeground(java.awt.Color.white);
 
         jLabel1.setText("Nome:");
 
         txtNome.addActionListener(this::txtNomeActionPerformed);
 
+        btnCancelar.setBackground(new java.awt.Color(230, 230, 230));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
+        btnSalvar1.setBackground(new java.awt.Color(0, 102, 255));
+        btnSalvar1.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar1.setText("Salvar");
         btnSalvar1.addActionListener(this::btnSalvar1ActionPerformed);
 
@@ -59,15 +85,15 @@ public class CadastroProduto extends javax.swing.JDialog {
 
         txtDescricao.addActionListener(this::txtDescricaoActionPerformed);
 
-        txtTelefone1.setText("Preço:");
+        txtTelefone1.setText("Preço Venda:");
 
         txtPreco.addActionListener(this::txtPrecoActionPerformed);
 
-        txtCategoria.setText("Categoria");
+        txtCategoria.setText("Categoria:");
 
         txtIdCategoria.addActionListener(this::txtIdCategoriaActionPerformed);
 
-        lblEstoque.setText("Estoque");
+        lblEstoque.setText("Estoque:");
 
         txtEstoque.addActionListener(this::txtEstoqueActionPerformed);
 
@@ -76,50 +102,51 @@ public class CadastroProduto extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblEstoque)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtCategoria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtTelefone1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPreco))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtTelefone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescricao))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCategoria)
+                            .addComponent(lblEstoque))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdCategoria)
+                            .addComponent(txtEstoque)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(btnSalvar1)
-                        .addGap(38, 38, 38)
+                        .addGap(94, 94, 94)
                         .addComponent(btnCancelar)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone1)
                     .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCategoria)
                     .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,11 +154,11 @@ public class CadastroProduto extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEstoque)
                     .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar1)
                     .addComponent(btnCancelar))
-                .addContainerGap())
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,33 +174,67 @@ dispose();    }//GEN-LAST:event_btnCancelarActionPerformed
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
 try {
 
-    ProdutoDTO dto = new ProdutoDTO(
-            txtNome.getText(),
-            txtDescricao.getText(),
-            txtPreco.getText(),
-            txtIdCategoria.getText(),
-txtEstoque.getText()
-    );
+        if (txtNome.getText().isBlank()) {
+            throw new Exception("Informe o nome do produto");
+        }
 
-    ProdutoController.salvar(dto);
+        if (txtDescricao.getText().isBlank()) {
+            throw new Exception("Informe a descrição do produto");
+        }
 
-    javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Produto salvo com sucesso"
-    );
+        if (txtPreco.getText().isBlank()) {
+            throw new Exception("Informe o preço");
+        }
 
-    txtNome.setText("");
-    txtDescricao.setText("");
-    txtPreco.setText("");
-    txtIdCategoria.setText("");
-txtEstoque.setText("");
+        if (txtIdCategoria.getText().isBlank()) {
+            throw new Exception("Informe o ID da categoria");
+        }
 
-} catch (Exception e) {
+        if (txtEstoque.getText().isBlank()) {
+            throw new Exception("Informe o estoque");
+        }
 
-    javax.swing.JOptionPane.showMessageDialog(
-            this,
-            e.getMessage()
-    );
+        ProdutoDTO dto;
+
+        if (produtoId == null) {
+            dto = new ProdutoDTO(
+                    txtNome.getText(),
+                    txtDescricao.getText(),
+                    txtPreco.getText(),
+                    txtIdCategoria.getText(),
+                    txtEstoque.getText()
+            );
+
+            ProdutoController.salvar(dto);
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Produto salvo com sucesso");
+        } else {
+            dto = new ProdutoDTO(
+                    produtoId,
+                    txtNome.getText(),
+                    txtDescricao.getText(),
+                    txtPreco.getText(),
+                    txtIdCategoria.getText(),
+                    txtEstoque.getText()
+            );
+
+            ProdutoController.editar(dto);
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso");
+        }
+
+        txtNome.setText("");
+        txtDescricao.setText("");
+        txtPreco.setText("");
+        txtIdCategoria.setText("");
+        txtEstoque.setText("");
+
+        dispose();
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+        
+    
 }    }//GEN-LAST:event_btnSalvar1ActionPerformed
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed

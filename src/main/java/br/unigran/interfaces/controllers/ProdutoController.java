@@ -6,6 +6,7 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.ProdutoDTO;
 import br.unigran.application.usecase.GerenciarProdutoUC;
+import br.unigran.domain.entity.Produto;
 import java.util.List;
 
 /**
@@ -20,7 +21,18 @@ public class ProdutoController {
         uc.cadastrarProduto(dto.build());
     }
 
-    public static List listarTodos() {
+    public static void editar(ProdutoDTO dto) throws Exception {
+        uc.atualizar(dto.build());
+    }
+
+    public static void excluir(Integer id) throws Exception {
+        Produto produto = new Produto();
+        produto.setId(id);
+
+        uc.remover(produto);
+    }
+
+    public static List<Produto> listarTodos() {
         return uc.listarTodos();
     }
 }

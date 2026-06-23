@@ -60,14 +60,14 @@ public class PainelCategorias extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnNovaCategoroa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCategorias = new javax.swing.JTable();
+        btnNovaCategoroa1 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Categorias cadastradas");
-
-        btnNovaCategoroa.setText("Nova Categoria");
-        btnNovaCategoroa.addActionListener(this::btnNovaCategoroaActionPerformed);
 
         tblCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,49 +82,106 @@ public class PainelCategorias extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCategorias);
 
+        btnNovaCategoroa1.setBackground(new java.awt.Color(51, 102, 255));
+        btnNovaCategoroa1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovaCategoroa1.setText("+ Nova Categoria");
+        btnNovaCategoroa1.addActionListener(this::btnNovaCategoroa1ActionPerformed);
+
+        btnEditar.setBackground(new java.awt.Color(204, 204, 204));
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
+
+        btnExcluir.setBackground(new java.awt.Color(204, 204, 204));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNovaCategoroa)
-                    .addComponent(jLabel1))
-                .addContainerGap(141, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(12, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnExcluir)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnNovaCategoroa1)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEditar)
+                        .addComponent(btnNovaCategoroa1)
+                        .addComponent(btnExcluir)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNovaCategoroa)
-                .addContainerGap(219, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(94, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovaCategoroaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCategoroaActionPerformed
-        CadastroCategoria tela = new CadastroCategoria();
+    private void btnNovaCategoroa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCategoroa1ActionPerformed
+        CadastroCategoria tela = new CadastroCategoria(null, true);
         tela.setLocationRelativeTo(null);
         tela.setVisible(true);
 
         carregarTabela();
-    }//GEN-LAST:event_btnNovaCategoroaActionPerformed
+    }//GEN-LAST:event_btnNovaCategoroa1ActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int linha = tblCategorias.getSelectedRow();
+
+        if (linha == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione uma categoria");
+            return;
+        }
+
+        Integer id = Integer.valueOf(tblCategorias.getValueAt(linha, 0).toString());
+        String nome = tblCategorias.getValueAt(linha, 1).toString();
+
+        CadastroCategoria tela = new CadastroCategoria(null, true, id, nome);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
+
+        carregarTabela();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linha = tblCategorias.getSelectedRow();
+
+        if (linha == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione uma categoria");
+            return;
+        }
+
+        Integer id = Integer.valueOf(tblCategorias.getValueAt(linha, 0).toString());
+
+        br.unigran.domain.entity.Categoria categoria = new br.unigran.domain.entity.Categoria();
+        categoria.setId(id);
+
+        try {
+            CategoriaController.remover(categoria);
+            javax.swing.JOptionPane.showMessageDialog(this, "Categoria excluída com sucesso");
+            carregarTabela();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNovaCategoroa;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovaCategoroa1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCategorias;

@@ -20,28 +20,36 @@ public class PainelUsuarios extends javax.swing.JPanel {
      */
     public PainelUsuarios() {
         initComponents();
+        setBackground(new java.awt.Color(232, 236, 241));
+
+        tblUsuarios.setRowHeight(26);
+        tblUsuarios.setShowGrid(false);
+        tblUsuarios.setSelectionBackground(new java.awt.Color(204, 229, 255));
+        tblUsuarios.setSelectionForeground(java.awt.Color.BLACK);
+
         carregarTabela();
 
     }
+
     private void carregarTabela() {
-    DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.addColumn("ID");
-    modelo.addColumn("Nome");
-    modelo.addColumn("Login");
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Login");
 
-    List<Usuario> usuarios = UsuarioController.listarTodos();
+        List<Usuario> usuarios = UsuarioController.listarTodos();
 
-    for (Usuario u : usuarios) {
-        modelo.addRow(new Object[]{
-            u.getId(),
-            u.getNome(),
-            u.getLogin()
-        });
+        for (Usuario u : usuarios) {
+            modelo.addRow(new Object[]{
+                u.getId(),
+                u.getNome(),
+                u.getLogin()
+            });
+        }
+
+        tblUsuarios.setModel(modelo);
     }
-
-    tblUsuarios.setModel(modelo);
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,8 +65,11 @@ public class PainelUsuarios extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Usuários cadastrados");
 
+        btnNovoUsuario.setBackground(new java.awt.Color(0, 102, 204));
+        btnNovoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoUsuario.setText("Novo Usuário");
         btnNovoUsuario.addActionListener(this::btnNovoUsuarioActionPerformed);
 
@@ -80,41 +91,36 @@ public class PainelUsuarios extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jLabel1)
-                .addContainerGap(148, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNovoUsuario)
-                .addGap(80, 80, 80))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(12, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNovoUsuario)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(btnNovoUsuario)
-                .addContainerGap(220, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(104, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnNovoUsuario))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
-    CadastroUsuario tela = new CadastroUsuario(null, true);
-    tela.setLocationRelativeTo(null);
-    tela.setVisible(true);
+        CadastroUsuario tela = new CadastroUsuario(null, true);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
 
-    carregarTabela();
+        carregarTabela();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoUsuarioActionPerformed
 

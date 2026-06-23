@@ -11,6 +11,7 @@ br\unigran\application\services\Sessao.class
 br\unigran\infra\repository\VendaRepositoryimpl.class
 br\unigran\interfaces\ui\screens\PainelEstoque.class
 br\unigran\interfaces\ui\screens\CadastroItemEntrada$1.class
+br\unigran\interfaces\ui\screens\CadastroVenda.class
 br\unigran\domain\repositories\PagamentoRepository.class
 br\unigran\interfaces\ui\screens\CadastroUsuario.class
 br\unigran\domain\repositories\VendaRepository.class
@@ -24,6 +25,7 @@ br\unigran\interfaces\ui\screens\Principal.class
 br\unigran\interfaces\ui\screens\CadastroPermissaoUsuario.class
 br\unigran\domain\entity\ItemVenda.class
 br\unigran\interfaces\ui\screens\CadastroMovimentacaoEstoque.class
+br\unigran\interfaces\ui\screens\CadastroVenda$1.class
 br\unigran\application\dto\ClienteDTO.class
 br\unigran\interfaces\controllers\EntradaProdutoController.class
 br\unigran\infra\repository\UsuarioRepositoryimpl.class
@@ -52,7 +54,9 @@ br\unigran\application\dto\ProdutoDTO.class
 br\unigran\application\dto\EntradaProdutoDTO.class
 br\unigran\application\dto\FornecedorDTO.class
 br\unigran\interfaces\ui\screens\CadastroItemEntrada.class
+br\unigran\interfaces\ui\screens\RelatoriosPanel.class
 br\unigran\interfaces\controllers\ProdutoController.class
+br\unigran\interfaces\ui\screens\PainelVendas.class
 br\unigran\domain\entity\Usuario.class
 br\unigran\interfaces\ui\screens\CadastroCliente$1$1.class
 br\unigran\interfaces\ui\screens\CadastroPermissaoUsuario$1.class
@@ -67,13 +71,16 @@ br\unigran\interfaces\ui\screens\CadastroUsuario$1$1.class
 br\unigran\interfaces\ui\screens\CadastroMovimentacaoEstoque$1$1.class
 br\unigran\interfaces\ui\screens\CadastroProduto$1.class
 br\unigran\domain\entity\Fornecedor.class
+br\unigran\interfaces\controllers\VendaController.class
 br\unigran\domain\entity\Venda.class
 br\unigran\application\usecase\GerenciarClienteUC.class
 br\unigran\interfaces\controllers\FornecedorController.class
 br\unigran\domain\repositories\FornecedorRepository.class
 br\unigran\application\dto\CategoriaDTO.class
+br\unigran\application\dto\VendaDTO.class
 br\unigran\infra\persistence\JPAUtil.class
 br\unigran\infra\repository\FornecedorRepositoryimpl.class
+br\unigran\interfaces\ui\screens\CadastroVenda$1$1.class
 br\unigran\interfaces\controllers\ItemEntradaController.class
 br\unigran\app\Principal\SistemaP2.class
 br\unigran\domain\repositories\PermissaoUsuarioRepository.class
@@ -96,6 +103,7 @@ br\unigran\interfaces\ui\screens\CadastroCategoria.class
 br\unigran\interfaces\ui\screens\CadastroTipoPermissoes.class
 br\unigran\application\dto\MovimentacaoEstoqueDTO.class
 br\unigran\application\usecase\GerenciarFornecedorUC.class
+br\unigran\application\usecase\GerenciarVendaUC.class
 br\unigran\application\usecase\GerenciarCategoriaUC.class
 br\unigran\domain\entity\TipoPermissoes.class
 br\unigran\interfaces\ui\screens\CadastroMovimentacaoEstoque$1.class
@@ -116,6 +124,8 @@ br\unigran\interfaces\ui\screens\CadastroPagamento$1.class
 br\unigran\interfaces\controllers\ClienteController.class
 br\unigran\interfaces\ui\screens\PainelTipoPermissoes.class
 br\unigran\domain\entity\Pagamento.class
+br\unigran\interfaces\ui\screens\PainelPagamento.class
+br\unigran\interfaces\ui\screens\PainelVendas$1.class
 br\unigran\interfaces\ui\screens\PainelCategorias.class
 br\unigran\application\dto\ItemEntradaDTO.class
 br\unigran\interfaces\ui\screens\CadastroPagamento$1$1.class

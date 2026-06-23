@@ -39,6 +39,5 @@ public class PagamentoRepositoryimpl implements PagamentoRepository {
 
     @Override
     public List<Pagamento> listarTodos() {
-        return dao.listar("From Pagamento", null);
-    }
+return dao.listar("SELECT p FROM Pagamento p", null);    }
 }

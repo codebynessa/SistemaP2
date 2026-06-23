@@ -36,10 +36,9 @@ public class GerenciarPagamentoUC {
         return "Pagamento atualizado com sucesso";
     }
 
-    public List listarTodos() {
-        return repository.listar("From Pagamento", null);
-    }
-
+public List listarTodos() {
+    return repository.listarTodos();
+}
 public void valida(Pagamento pagamento) throws Exception {
 
     if (pagamento.getTipo() == null || pagamento.getTipo().isBlank()) {

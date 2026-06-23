@@ -12,21 +12,28 @@ import br.unigran.domain.entity.Fornecedor;
  */
 public class FornecedorDTO {
     
+    public Integer id;
     public String nomeFornecedor;
     public String cnpjFornecedor;
     public String telefoneFornecedor;
 
     public FornecedorDTO(String nomeFornecedor, String cnpjFornecedor, String telefoneFornecedor) {
+        this.nomeFornecedor = nomeFornecedor;
+        this.cnpjFornecedor = cnpjFornecedor;
+        this.telefoneFornecedor = telefoneFornecedor;
+    }
 
+    public FornecedorDTO(Integer id, String nomeFornecedor, String cnpjFornecedor, String telefoneFornecedor) {
+        this.id = id;
         this.nomeFornecedor = nomeFornecedor;
         this.cnpjFornecedor = cnpjFornecedor;
         this.telefoneFornecedor = telefoneFornecedor;
     }
 
     public Fornecedor build() {
-
         Fornecedor fornecedor = new Fornecedor();
 
+        fornecedor.setId(id);
         fornecedor.setNome(nomeFornecedor);
         fornecedor.setCnpj(cnpjFornecedor);
         fornecedor.setTelefone(telefoneFornecedor);

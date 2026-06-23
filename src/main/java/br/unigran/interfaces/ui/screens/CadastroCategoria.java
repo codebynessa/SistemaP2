@@ -12,15 +12,36 @@ import javax.swing.JOptionPane;
  *
  * @author vanes
  */
-public class CadastroCategoria extends javax.swing.JFrame {
-    
+public class CadastroCategoria extends javax.swing.JDialog {
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroCategoria.class.getName());
+
+    private Integer idCategoria;
 
     /**
      * Creates new form CadastroCategoria
      */
-    public CadastroCategoria() {
+    public CadastroCategoria(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        this.idCategoria = null;
+
+        setTitle("Cadastro de Categoria");
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(new java.awt.Color(232, 236, 241));
+    }
+
+    public CadastroCategoria(java.awt.Frame parent, boolean modal, Integer idCategoria, String nomeCategoria) {
+        super(parent, modal);
+        initComponents();
+
+        this.idCategoria = idCategoria;
+        txtNome.setText(nomeCategoria);
+
+        setTitle("Editar Categoria");
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(new java.awt.Color(232, 236, 241));
+
     }
 
     /**
@@ -35,6 +56,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,8 +64,14 @@ public class CadastroCategoria extends javax.swing.JFrame {
 
         txtNome.addActionListener(this::txtNomeActionPerformed);
 
+        btnSalvar.setBackground(new java.awt.Color(51, 102, 255));
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
+
+        btnCancelar.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,14 +80,16 @@ public class CadastroCategoria extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(btnSalvar)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                        .addGap(116, 116, 116)
+                        .addComponent(btnSalvar)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +99,9 @@ public class CadastroCategoria extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
 
@@ -81,18 +113,26 @@ public class CadastroCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-try {
-    CategoriaDTO dto = new CategoriaDTO(txtNome.getText());
+        try {
+            if (idCategoria == null) {
+                CategoriaDTO dto = new CategoriaDTO(txtNome.getText());
+                CategoriaController.salvar(dto);
+                JOptionPane.showMessageDialog(this, "Categoria salva com sucesso");
+            } else {
+                CategoriaDTO dto = new CategoriaDTO(idCategoria, txtNome.getText());
+                CategoriaController.atualizar(dto);
+                JOptionPane.showMessageDialog(this, "Categoria atualizada com sucesso");
+            }
 
-    CategoriaController.salvar(dto);
+            dispose();
 
-    JOptionPane.showMessageDialog(this, "Categoria salva com sucesso");
-
-    txtNome.setText("");
-
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
 }    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,10 +156,11 @@ try {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CadastroCategoria().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new CadastroCategoria(new javax.swing.JFrame(), true).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtNome;

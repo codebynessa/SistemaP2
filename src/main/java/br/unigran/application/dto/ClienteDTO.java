@@ -12,8 +12,16 @@ import br.unigran.domain.entity.Cliente;
  */
 public class ClienteDTO {
 
+    public Integer id;
     public String nome;
+    public String cpf;
     public String telefone;
+
+    public ClienteDTO(String nome, String cpf, String telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
 
     public ClienteDTO(String text) {
     }
@@ -23,11 +31,19 @@ public class ClienteDTO {
         this.telefone = telefone;
     }
 
+    public ClienteDTO(Integer id, String nome, String cpf, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
+
     public Cliente build() {
         Cliente c = new Cliente();
-
-        c.setNome(nome);
-        c.setTelefone(telefone);
+        c.setId(id);
+        c.setNome(nome.trim());
+        c.setCpf(cpf.trim());
+        c.setTelefone(telefone.trim());
 
         return c;
     }

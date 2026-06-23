@@ -6,8 +6,8 @@ package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.ClienteDTO;
 import br.unigran.application.usecase.GerenciarClienteUC;
+import br.unigran.domain.entity.Cliente;
 import java.util.List;
-
 /**
  *
  * @author vanes
@@ -25,4 +25,9 @@ public class ClienteController {
     public static List listarTodos() {
         return uc.listarTodos();
     }
+    public static void atualizar(ClienteDTO dto) throws Exception {
+    uc.atualizar(dto.build());
+}public static void remover(Cliente cliente) throws Exception {
+    uc.remover(cliente);
+}
 }

@@ -10,16 +10,33 @@ import br.unigran.interfaces.controllers.FornecedorController;
  * @author vanes
  */
 public class CadastroFornecedor extends javax.swing.JDialog {
-    
+    private Integer fornecedorId = null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName());
 
     /**
      * Creates new form CadastroFornecedor
      */
     public CadastroFornecedor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
+      super(parent, modal);
+    initComponents();
+    setTitle("Cadastro de Fornecedor");
+    setLocationRelativeTo(null);
     }
+    public CadastroFornecedor(java.awt.Frame parent, boolean modal, Integer id, String nome, String cnpj, String telefone) {
+    super(parent, modal);
+    initComponents();
+
+    this.fornecedorId = id;
+
+    txtNome.setText(nome);
+    txtCNPJ.setText(cnpj);
+    txtTelefone.setText(telefone);
+
+    btnSalvar.setText("Atualizar");
+
+    setTitle("Editar Fornecedor");
+    setLocationRelativeTo(null);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,9 +66,12 @@ public class CadastroFornecedor extends javax.swing.JDialog {
 
         jLabel3.setText("Telefone:");
 
+        btnSalvar.setBackground(new java.awt.Color(0, 102, 255));
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
+        btnCancelar.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
@@ -60,40 +80,39 @@ public class CadastroFornecedor extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtTelefone))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(29, 29, 29)
-                            .addComponent(btnSalvar)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnCancelar))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(txtCNPJ)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(btnSalvar)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -101,7 +120,7 @@ public class CadastroFornecedor extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,23 +131,40 @@ public class CadastroFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-try {
-    FornecedorDTO dto = new FornecedorDTO(
-            txtNome.getText(),
-            txtCNPJ.getText(),
-            txtTelefone.getText()
-    );
+ try {
+        FornecedorDTO dto;
 
-    FornecedorController.salvar(dto);
+        if (fornecedorId == null) {
+            dto = new FornecedorDTO(
+                    txtNome.getText(),
+                    txtCNPJ.getText(),
+                    txtTelefone.getText()
+            );
 
-    javax.swing.JOptionPane.showMessageDialog(this, "Fornecedor salvo com sucesso");
+            FornecedorController.salvar(dto);
 
-    txtNome.setText("");
-    txtCNPJ.setText("");
-    txtTelefone.setText("");
+            javax.swing.JOptionPane.showMessageDialog(this, "Fornecedor salvo com sucesso.");
+        } else {
+            dto = new FornecedorDTO(
+                    fornecedorId,
+                    txtNome.getText(),
+                    txtCNPJ.getText(),
+                    txtTelefone.getText()
+            );
 
-} catch (Exception e) {
-    javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+            FornecedorController.editar(dto);
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Fornecedor atualizado com sucesso.");
+        }
+
+        txtNome.setText("");
+        txtCNPJ.setText("");
+        txtTelefone.setText("");
+
+        dispose();
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
 }    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

@@ -16,8 +16,17 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
 public Principal() {
-    initComponents();
+  initComponents();
+
+    setSize(1000, 700);
     setLocationRelativeTo(null);
+
+    pnlConteudo.setBounds(140, 30, 860, 670);
+    pnlConteudo.setPreferredSize(new java.awt.Dimension(860, 670));
+
+    abrirTela(new PainelDashboard());
+
+
 }
 
 private void abrirTela(javax.swing.JPanel tela) {
@@ -26,6 +35,7 @@ private void abrirTela(javax.swing.JPanel tela) {
     pnlConteudo.add(tela, java.awt.BorderLayout.CENTER);
     pnlConteudo.revalidate();
     pnlConteudo.repaint();
+    
 }
 
     /**
@@ -51,29 +61,17 @@ private void abrirTela(javax.swing.JPanel tela) {
         btnUsuarios = new javax.swing.JButton();
         pnlConteudo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlTopo.setBackground(new java.awt.Color(40, 40, 40));
-
-        javax.swing.GroupLayout pnlTopoLayout = new javax.swing.GroupLayout(pnlTopo);
-        pnlTopo.setLayout(pnlTopoLayout);
-        pnlTopoLayout.setHorizontalGroup(
-            pnlTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        pnlTopoLayout.setVerticalGroup(
-            pnlTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pnlTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 30));
+        pnlTopo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(pnlTopo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         pnlMenu.setBackground(new java.awt.Color(60, 60, 60));
+        pnlMenu.setPreferredSize(new java.awt.Dimension(180, 670));
 
         btnDashboard.setText("Dashboard ");
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
@@ -88,8 +86,10 @@ private void abrirTela(javax.swing.JPanel tela) {
         btnProdutos.addActionListener(this::btnProdutosActionPerformed);
 
         btnRelatorios.setText("Relatórios");
+        btnRelatorios.addActionListener(this::btnRelatoriosActionPerformed);
 
         btnVendas.setText("Vendas");
+        btnVendas.addActionListener(this::btnVendasActionPerformed);
 
         btnConfiguracoes.setText("Configurações");
         btnConfiguracoes.addActionListener(this::btnConfiguracoesActionPerformed);
@@ -125,102 +125,60 @@ private void abrirTela(javax.swing.JPanel tela) {
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(btnDashboard)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnVendas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnProdutos)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(btnEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnClientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnFornecedores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnRelatorios)
-                .addGap(5, 5, 5)
+                .addGap(18, 18, 18)
                 .addComponent(btnCategorias)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnConfiguracoes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnUsuarios)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConfiguracoes)
+                .addContainerGap(350, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 140, 390));
+        getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 140, 770));
 
         pnlConteudo.setBackground(new java.awt.Color(240, 240, 240));
+        pnlConteudo.setPreferredSize(new java.awt.Dimension(860, 630));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(226, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout pnlConteudoLayout = new javax.swing.GroupLayout(pnlConteudo);
         pnlConteudo.setLayout(pnlConteudoLayout);
         pnlConteudoLayout.setHorizontalGroup(
             pnlConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConteudoLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(561, 561, 561)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         pnlConteudoLayout.setVerticalGroup(
             pnlConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConteudoLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(680, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlConteudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 500, 300));
+        getContentPane().add(pnlConteudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 810, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfiguracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracoesActionPerformed
-    abrirTela(new PainelItemEntrada());
+    abrirTela(new PainelPagamento());
     }//GEN-LAST:event_btnConfiguracoesActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
@@ -257,6 +215,14 @@ private void abrirTela(javax.swing.JPanel tela) {
     abrirTela(new PainelUsuarios());
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
+    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+    abrirTela(new PainelVendas());
+    }//GEN-LAST:event_btnVendasActionPerformed
+
+    private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
+        abrirTela(new RelatoriosPanel());
+    }//GEN-LAST:event_btnRelatoriosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,7 +245,7 @@ private void abrirTela(javax.swing.JPanel tela) {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
+java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -294,9 +260,6 @@ private void abrirTela(javax.swing.JPanel tela) {
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVendas;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel pnlConteudo;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlTopo;

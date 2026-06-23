@@ -12,6 +12,7 @@ import java.util.List;
  * @author vanes
  */
 public interface ClienteRepository extends AbstractRepository {
+
     public List<Cliente> listarTodos();
-    
+
 }

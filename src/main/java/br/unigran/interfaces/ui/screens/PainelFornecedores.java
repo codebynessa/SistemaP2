@@ -4,6 +4,7 @@
  */
 package br.unigran.interfaces.ui.screens;
 
+import javax.swing.JOptionPane;
 import br.unigran.domain.entity.Fornecedor;
 import br.unigran.interfaces.controllers.FornecedorController;
 import java.util.List;
@@ -22,27 +23,28 @@ public class PainelFornecedores extends javax.swing.JPanel {
         initComponents();
         carregarTabela();
     }
+
     private void carregarTabela() {
-    DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.addColumn("ID");
-    modelo.addColumn("Nome");
-    modelo.addColumn("CNPJ");
-    modelo.addColumn("Telefone");
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        modelo.addColumn("CNPJ");
+        modelo.addColumn("Telefone");
 
-    List<Fornecedor> fornecedores = FornecedorController.listarTodos();
+        List<Fornecedor> fornecedores = FornecedorController.listarTodos();
 
-    for (Fornecedor f : fornecedores) {
-        modelo.addRow(new Object[]{
-            f.getId(),
-            f.getNome(),
-            f.getCnpj(),
-            f.getTelefone()
-        });
+        for (Fornecedor f : fornecedores) {
+            modelo.addRow(new Object[]{
+                f.getId(),
+                f.getNome(),
+                f.getCnpj(),
+                f.getTelefone()
+            });
+        }
+
+        tblFornecedores.setModel(modelo);
     }
-
-    tblFornecedores.setModel(modelo);
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,10 +59,16 @@ public class PainelFornecedores extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFornecedores = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Fornecedores cadastrados");
 
-        jButton1.setText("Novo Fornecedor");
+        jButton1.setBackground(new java.awt.Color(0, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("+ Novo Fornecedor");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         tblFornecedores.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,57 +79,125 @@ public class PainelFornecedores extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "CNPJ", "Telefone"
             }
         ));
         jScrollPane1.setViewportView(tblFornecedores);
+
+        btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jLabel1)
-                .addContainerGap(142, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(57, 57, 57))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(12, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(27, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(155, 155, 155)
+                        .addComponent(btnEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(226, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(99, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(btnEditar)
+                    .addComponent(btnExcluir))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-CadastroFornecedor tela = new CadastroFornecedor(null, true);
-    tela.setLocationRelativeTo(null);
-    tela.setVisible(true);
+        CadastroFornecedor tela = new CadastroFornecedor(null, true);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
 
     carregarTabela();    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        Integer id = pegarIdSelecionado();
+
+        if (id == null) {
+            return;
+        }
+
+        int linha = tblFornecedores.getSelectedRow();
+
+        String nome = tblFornecedores.getValueAt(linha, 1).toString();
+        String cnpj = tblFornecedores.getValueAt(linha, 2).toString();
+        String telefone = tblFornecedores.getValueAt(linha, 3).toString();
+
+        CadastroFornecedor tela = new CadastroFornecedor(null, true, id, nome, cnpj, telefone);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
+
+        carregarTabela();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            Integer id = pegarIdSelecionado();
+
+            if (id == null) {
+                return;
+            }
+
+            int opcao = JOptionPane.showConfirmDialog(
+                    this,
+                    "Deseja realmente excluir este fornecedor?",
+                    "Confirmar exclusão",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (opcao == JOptionPane.YES_OPTION) {
+                FornecedorController.excluir(id);
+
+                JOptionPane.showMessageDialog(this, "Fornecedor excluído com sucesso.");
+
+                carregarTabela();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+}    }//GEN-LAST:event_btnExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblFornecedores;
     // End of variables declaration//GEN-END:variables
+private Integer pegarIdSelecionado() {
+        int linha = tblFornecedores.getSelectedRow();
+
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um fornecedor na tabela.");
+            return null;
+        }
+
+        return Integer.parseInt(tblFornecedores.getValueAt(linha, 0).toString());
+    }
 }

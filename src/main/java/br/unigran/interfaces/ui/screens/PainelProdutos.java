@@ -5,13 +5,12 @@
  */
 package br.unigran.interfaces.ui.screens;
 
-
-
 import br.unigran.domain.entity.Produto;
 import br.unigran.interfaces.controllers.ProdutoController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vanes
@@ -23,42 +22,71 @@ public class PainelProdutos extends javax.swing.JPanel {
      */
     public PainelProdutos() {
         initComponents();
+
+        setBackground(new java.awt.Color(232, 236, 241));
+
+        tblProdutos.setRowHeight(25);
+        tblProdutos.setShowGrid(false);
+        tblProdutos.setSelectionBackground(new java.awt.Color(204, 229, 255));
+        tblProdutos.setSelectionForeground(java.awt.Color.BLACK);
+        tblProdutos.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 12));
+
         carregarTabela();
 
     }
 
     private void carregarTabela() {
-    try {
-    DefaultTableModel modelo = new DefaultTableModel();
+        try {
+            DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.addColumn("ID");
-    modelo.addColumn("Nome");
-    modelo.addColumn("Descrição");
-    modelo.addColumn("Preço");
-    modelo.addColumn("Estoque");
+            modelo.addColumn("ID");
+            modelo.addColumn("Nome");
+            modelo.addColumn("Descrição");
+            modelo.addColumn("Preço");
+            modelo.addColumn("Estoque");
+            modelo.addColumn("Categoria");
+            modelo.addColumn("ID Categoria");
+            List<Produto> produtos = ProdutoController.listarTodos();
 
-    List<Produto> produtos = ProdutoController.listarTodos();
+            for (Produto p : produtos) {
+                String categoria = "";
+                Integer idCategoria = null;
 
-    for (Produto p : produtos) {
-        modelo.addRow(new Object[]{
-            p.getId(),
-            p.getNome(),
-            p.getDescricao(),
-            p.getPrecoVenda(),
-            p.getEstoqueAtual()
-        });
-    }
+                if (p.getCategoria() != null) {
+                    categoria = p.getCategoria().getNome();
+                    idCategoria = p.getCategoria().getId();
+                }
 
-    tblProdutos.setModel(modelo);
-}
-    catch (Exception e) {
-      JOptionPane.showMessageDialog(
+                modelo.addRow(new Object[]{
+                    p.getId(),
+                    p.getNome(),
+                    p.getDescricao(),
+                    p.getPrecoVenda(),
+                    p.getEstoqueAtual(),
+                    categoria,
+                    idCategoria
+                });
+            }
+
+            tblProdutos.setModel(modelo);
+            tblProdutos.removeColumn(tblProdutos.getColumnModel().getColumn(6));
+            tblProdutos.setRowHeight(25);
+            tblProdutos.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 12));
+
+            tblProdutos.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblProdutos.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tblProdutos.getColumnModel().getColumn(2).setPreferredWidth(180);
+            tblProdutos.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tblProdutos.getColumnModel().getColumn(4).setPreferredWidth(80);
+            tblProdutos.getColumnModel().getColumn(5).setPreferredWidth(120);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
                     this,
                     "Erro ao carregar produtos: " + e.getMessage()
             );
         }
-}
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,68 +101,158 @@ public class PainelProdutos extends javax.swing.JPanel {
         btnNovoProduto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setText("Produtos cadastrados");
 
-        btnNovoProduto.setText("Novo Produto");
+        btnNovoProduto.setBackground(new java.awt.Color(0, 102, 255));
+        btnNovoProduto.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoProduto.setText("+ Novo Produto");
+        btnNovoProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovoProduto.addActionListener(this::btnNovoProdutoActionPerformed);
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "Descrição", "Preço", "Estoque", "Categoria"
             }
         ));
         jScrollPane1.setViewportView(tblProdutos);
+
+        btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(387, 387, 387)
-                        .addComponent(btnNovoProduto))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblTitulo)
+                        .addGap(188, 188, 188)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluir)
+                        .addGap(121, 121, 121)
+                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(lblTitulo)
-                .addGap(49, 49, 49)
-                .addComponent(btnNovoProduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTitulo)
+                        .addComponent(btnEditar)
+                        .addComponent(btnExcluir))
+                    .addComponent(btnNovoProduto))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
-    CadastroProduto tela = new CadastroProduto(null, true);
-    tela.setLocationRelativeTo(null);
-    tela.setVisible(true);
+        CadastroProduto tela = new CadastroProduto(null, true);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
 
-    carregarTabela();
+        carregarTabela();
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        Integer id = pegarIdSelecionado();
+
+        if (id == null) {
+            return;
+        }
+
+        int linha = tblProdutos.getSelectedRow();
+
+        String nome = tblProdutos.getModel().getValueAt(linha, 1).toString();
+        String descricao = tblProdutos.getModel().getValueAt(linha, 2).toString();
+        String preco = tblProdutos.getModel().getValueAt(linha, 3).toString();
+        String estoque = tblProdutos.getModel().getValueAt(linha, 4).toString();
+        String idCategoria = tblProdutos.getModel().getValueAt(linha, 6).toString();
+
+        CadastroProduto tela = new CadastroProduto(
+                null,
+                true,
+                id,
+                nome,
+                descricao,
+                preco,
+                idCategoria,
+                estoque
+        );
+
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
+
+        carregarTabela();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            Integer id = pegarIdSelecionado();
+
+            if (id == null) {
+                return;
+            }
+
+            int opcao = JOptionPane.showConfirmDialog(
+                    this,
+                    "Deseja realmente excluir este produto?",
+                    "Confirmar exclusão",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (opcao == JOptionPane.YES_OPTION) {
+                ProdutoController.excluir(id);
+
+                JOptionPane.showMessageDialog(this, "Produto excluído com sucesso.");
+
+                carregarTabela();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovoProduto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tblProdutos;
     // End of variables declaration//GEN-END:variables
+private Integer pegarIdSelecionado() {
+        int linha = tblProdutos.getSelectedRow();
+
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um produto na tabela.");
+            return null;
+        }
+
+        return Integer.parseInt(tblProdutos.getValueAt(linha, 0).toString());
+    }
 }

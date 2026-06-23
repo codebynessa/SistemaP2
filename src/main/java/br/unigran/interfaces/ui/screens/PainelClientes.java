@@ -20,6 +20,13 @@ public class PainelClientes extends javax.swing.JPanel {
      */
     public PainelClientes() {
         initComponents();
+        setBackground(new java.awt.Color(232, 236, 241));
+
+        tblClientes.setRowHeight(26);
+        tblClientes.setShowGrid(false);
+        tblClientes.setSelectionBackground(new java.awt.Color(204, 229, 255));
+        tblClientes.setSelectionForeground(java.awt.Color.BLACK);
+
         carregarTabela();
 
     }
@@ -34,14 +41,19 @@ public class PainelClientes extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnNovoClientes = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
+        btnNovoClientes1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Clientes cadastrados");
 
-        btnNovoClientes.setText("Novo Cliente");
-        btnNovoClientes.addActionListener(this::btnNovoClientesActionPerformed);
+        btnEditar.setBackground(new java.awt.Color(204, 204, 204));
+        btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,68 +68,145 @@ public class PainelClientes extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblClientes);
 
+        btnNovoClientes1.setBackground(new java.awt.Color(0, 102, 255));
+        btnNovoClientes1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoClientes1.setText("+ Novo Cliente");
+        btnNovoClientes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNovoClientes1.addActionListener(this::btnNovoClientes1ActionPerformed);
+
+        btnExcluir.setBackground(new java.awt.Color(204, 204, 204));
+        btnExcluir.setText("Excluir");
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(this::btnExcluirActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
                         .addComponent(jLabel1)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnNovoClientes))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 176, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnExcluir)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnNovoClientes1)
+                        .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnNovoClientes))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addComponent(btnNovoClientes1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEditar)
+                        .addComponent(btnExcluir)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClientesActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int linha = tblClientes.getSelectedRow();
+
+        if (linha == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione um cliente");
+            return;
+        }
+
+        Integer id = Integer.valueOf(tblClientes.getValueAt(linha, 0).toString());
+        String nome = tblClientes.getValueAt(linha, 1).toString();
+        String cpf = tblClientes.getValueAt(linha, 2).toString();
+        String telefone = tblClientes.getValueAt(linha, 3).toString();
+
+        CadastroCliente tela = new CadastroCliente(null, true, id, nome, cpf, telefone);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
+
+        carregarTabela();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnNovoClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClientes1ActionPerformed
         CadastroCliente tela = new CadastroCliente(null, true);
         tela.setLocationRelativeTo(null);
         tela.setVisible(true);
+
         carregarTabela();
-    }//GEN-LAST:event_btnNovoClientesActionPerformed
-private void carregarTabela() {
-    DefaultTableModel modelo = new DefaultTableModel();
+    }//GEN-LAST:event_btnNovoClientes1ActionPerformed
 
-    modelo.addColumn("ID");
-    modelo.addColumn("Nome");
-    modelo.addColumn("CPF");
-    modelo.addColumn("Telefone");
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linha = tblClientes.getSelectedRow();
 
-    List<Cliente> clientes = ClienteController.listarTodos();
+        if (linha == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecione um cliente"
+            );
+            return;
+        }
 
-    for (Cliente c : clientes) {
-        modelo.addRow(new Object[]{
-            c.getId(),
-            c.getNome(),
-            c.getCpf(),
-            c.getTelefone()
-        });
+        Integer id = Integer.valueOf(
+                tblClientes.getValueAt(linha, 0).toString()
+        );
+
+        Cliente cliente = new Cliente();
+        cliente.setId(id);
+
+        try {
+
+            ClienteController.remover(cliente);
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Cliente excluído com sucesso"
+            );
+
+            carregarTabela();
+
+        } catch (Exception e) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage()
+            );
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+    private void carregarTabela() {
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        modelo.addColumn("CPF");
+        modelo.addColumn("Telefone");
+
+        List<Cliente> clientes = ClienteController.listarTodos();
+
+        for (Cliente c : clientes) {
+            modelo.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getCpf(),
+                c.getTelefone()
+            });
+        }
+
+        tblClientes.setModel(modelo);
     }
 
-    tblClientes.setModel(modelo);
-}
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNovoClientes;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovoClientes1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }
-

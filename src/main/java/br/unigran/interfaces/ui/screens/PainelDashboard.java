@@ -4,6 +4,12 @@
  */
 package br.unigran.interfaces.ui.screens;
 
+import br.unigran.interfaces.controllers.ClienteController;
+import br.unigran.interfaces.controllers.FornecedorController;
+import br.unigran.interfaces.controllers.PagamentoController;
+import br.unigran.interfaces.controllers.ProdutoController;
+import br.unigran.interfaces.controllers.VendaController;
+
 /**
  *
  * @author vanes
@@ -15,6 +21,32 @@ public class PainelDashboard extends javax.swing.JPanel {
      */
     public PainelDashboard() {
         initComponents();
+        cardProdutos.setBackground(new java.awt.Color(245, 248, 255));
+        cardClientes.setBackground(new java.awt.Color(245, 255, 247));
+        cardFornecedores.setBackground(new java.awt.Color(255, 250, 240));
+        cardVendas.setBackground(new java.awt.Color(250, 245, 255));
+        cardPagamentos.setBackground(new java.awt.Color(240, 255, 255));
+
+        carregarResumo();
+
+    }
+
+    private void carregarResumo() {
+        try {
+            if (br.unigran.application.services.Sessao.getInstance().getUsuario() != null) {
+                lblUsuarioLogado.setText(
+                        "Bem-vindo(a), "
+                        + br.unigran.application.services.Sessao.getInstance().getUsuario().getNome()
+                );
+            }
+            lblTotalProdutos.setText("Total: " + br.unigran.interfaces.controllers.ProdutoController.listarTodos().size());
+            lblTotalClientes.setText("Total: " + br.unigran.interfaces.controllers.ClienteController.listarTodos().size());
+            lblTotalFornecedores.setText("Total: " + br.unigran.interfaces.controllers.FornecedorController.listarTodos().size());
+            lblTotalVendas.setText("Total: " + br.unigran.interfaces.controllers.VendaController.listarTodos().size());
+            lblTotalPagamento.setText("Total: " + br.unigran.interfaces.controllers.PagamentoController.listarTodos().size());
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao carregar dashboard: " + e.getMessage());
+        }
     }
 
     /**
@@ -27,121 +59,308 @@ public class PainelDashboard extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        cardProdutos = new javax.swing.JPanel();
+        lblProdutosTitulo = new javax.swing.JLabel();
+        lblTotalProdutos = new javax.swing.JLabel();
+        cardClientes = new javax.swing.JPanel();
+        lblClientesTitulo = new javax.swing.JLabel();
+        lblTotalClientes = new javax.swing.JLabel();
+        cardFornecedores = new javax.swing.JPanel();
+        lblFornecedoresTitulo = new javax.swing.JLabel();
+        lblTotalFornecedores = new javax.swing.JLabel();
+        cardVendas = new javax.swing.JPanel();
+        lblVendasTitulo = new javax.swing.JLabel();
+        lblTotalVendas = new javax.swing.JLabel();
+        cardPagamentos = new javax.swing.JPanel();
+        lblPagamentosTitulo = new javax.swing.JLabel();
+        lblTotalPagamento = new javax.swing.JLabel();
+        lblUsuarioLogado = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
 
-        jLabel1.setText(" Dashboard Principal");
+        setPreferredSize(new java.awt.Dimension(860, 630));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel1.setText("Sistema Comercial");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
+        cardProdutos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        cardProdutos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        cardProdutos.setMaximumSize(new java.awt.Dimension(130, 80));
+        cardProdutos.setPreferredSize(new java.awt.Dimension(220, 130));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-        );
+        lblProdutosTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblProdutosTitulo.setText("Produtos");
+        lblProdutosTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        lblTotalProdutos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalProdutos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalProdutos.setPreferredSize(new java.awt.Dimension(120, 25));
+
+        javax.swing.GroupLayout cardProdutosLayout = new javax.swing.GroupLayout(cardProdutos);
+        cardProdutos.setLayout(cardProdutosLayout);
+        cardProdutosLayout.setHorizontalGroup(
+            cardProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardProdutosLayout.createSequentialGroup()
+                .addGroup(cardProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardProdutosLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(lblProdutosTitulo))
+                    .addGroup(cardProdutosLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblTotalProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        cardProdutosLayout.setVerticalGroup(
+            cardProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardProdutosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblProdutosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTotalProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        cardClientes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        cardClientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        cardClientes.setMaximumSize(new java.awt.Dimension(180, 110));
+        cardClientes.setPreferredSize(new java.awt.Dimension(220, 130));
+
+        lblClientesTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblClientesTitulo.setText("Clientes");
+
+        lblTotalClientes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalClientes.setPreferredSize(new java.awt.Dimension(120, 25));
+
+        javax.swing.GroupLayout cardClientesLayout = new javax.swing.GroupLayout(cardClientes);
+        cardClientes.setLayout(cardClientesLayout);
+        cardClientesLayout.setHorizontalGroup(
+            cardClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardClientesLayout.createSequentialGroup()
+                .addGroup(cardClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardClientesLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(lblClientesTitulo))
+                    .addGroup(cardClientesLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(lblTotalClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        cardClientesLayout.setVerticalGroup(
+            cardClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardClientesLayout.createSequentialGroup()
+                .addComponent(lblClientesTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTotalClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
+
+        cardFornecedores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        cardFornecedores.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        cardFornecedores.setMaximumSize(new java.awt.Dimension(220, 130));
+        cardFornecedores.setPreferredSize(new java.awt.Dimension(220, 130));
+
+        lblFornecedoresTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFornecedoresTitulo.setText("Fornecedores");
+
+        lblTotalFornecedores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalFornecedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblTotalFornecedores.setPreferredSize(new java.awt.Dimension(120, 25));
+        lblTotalFornecedores.setVerifyInputWhenFocusTarget(false);
+
+        javax.swing.GroupLayout cardFornecedoresLayout = new javax.swing.GroupLayout(cardFornecedores);
+        cardFornecedores.setLayout(cardFornecedoresLayout);
+        cardFornecedoresLayout.setHorizontalGroup(
+            cardFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardFornecedoresLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(cardFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFornecedoresTitulo)
+                    .addComponent(lblTotalFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+        cardFornecedoresLayout.setVerticalGroup(
+            cardFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardFornecedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFornecedoresTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(lblTotalFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        cardVendas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        cardVendas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        cardVendas.setMaximumSize(null);
+        cardVendas.setPreferredSize(new java.awt.Dimension(220, 130));
+
+        lblVendasTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblVendasTitulo.setText("Vendas");
+
+        lblTotalVendas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalVendas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalVendas.setPreferredSize(new java.awt.Dimension(120, 25));
+
+        javax.swing.GroupLayout cardVendasLayout = new javax.swing.GroupLayout(cardVendas);
+        cardVendas.setLayout(cardVendasLayout);
+        cardVendasLayout.setHorizontalGroup(
+            cardVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardVendasLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(cardVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVendasTitulo))
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        cardVendasLayout.setVerticalGroup(
+            cardVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardVendasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblVendasTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(lblTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        cardPagamentos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        cardPagamentos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        cardPagamentos.setMaximumSize(null);
+        cardPagamentos.setPreferredSize(new java.awt.Dimension(220, 130));
+
+        lblPagamentosTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPagamentosTitulo.setText("Pagamentos");
+
+        lblTotalPagamento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTotalPagamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalPagamento.setPreferredSize(new java.awt.Dimension(120, 25));
+
+        javax.swing.GroupLayout cardPagamentosLayout = new javax.swing.GroupLayout(cardPagamentos);
+        cardPagamentos.setLayout(cardPagamentosLayout);
+        cardPagamentosLayout.setHorizontalGroup(
+            cardPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardPagamentosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPagamentosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+            .addGroup(cardPagamentosLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(lblTotalPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        cardPagamentosLayout.setVerticalGroup(
+            cardPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardPagamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPagamentosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTotalPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addGap(30, 30, 30))
+        );
+
+        lblUsuarioLogado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblUsuarioLogado.setText("Bem-vindo(a), ");
+
+        btnSair.setBackground(new java.awt.Color(40, 40, 40));
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setText("Sair");
+        btnSair.setBorder(null);
+        btnSair.setOpaque(true);
+        btnSair.setPreferredSize(new java.awt.Dimension(90, 30));
+        btnSair.addActionListener(this::btnSairActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lblUsuarioLogado)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addGap(553, 553, 553)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(132, 132, 132))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cardProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(cardClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(cardFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(156, 156, 156))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(cardVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106)
+                .addComponent(cardPagamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(cardPagamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblUsuarioLogado)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cardClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cardFornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cardProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(cardVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        int resposta = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente sair?",
+                "Confirmação",
+                javax.swing.JOptionPane.YES_NO_OPTION
+        );
+
+        if (resposta == javax.swing.JOptionPane.YES_OPTION) {
+
+            br.unigran.application.services.Sessao.getInstance().limpar();
+
+            new TelaLogin().setVisible(true);
+
+            java.awt.Window janela = javax.swing.SwingUtilities.getWindowAncestor(this);
+            janela.dispose();
+        }
+
+    }//GEN-LAST:event_btnSairActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSair;
+    private javax.swing.JPanel cardClientes;
+    private javax.swing.JPanel cardFornecedores;
+    private javax.swing.JPanel cardPagamentos;
+    private javax.swing.JPanel cardProdutos;
+    private javax.swing.JPanel cardVendas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lblClientesTitulo;
+    private javax.swing.JLabel lblFornecedoresTitulo;
+    private javax.swing.JLabel lblPagamentosTitulo;
+    private javax.swing.JLabel lblProdutosTitulo;
+    private javax.swing.JLabel lblTotalClientes;
+    private javax.swing.JLabel lblTotalFornecedores;
+    private javax.swing.JLabel lblTotalPagamento;
+    private javax.swing.JLabel lblTotalProdutos;
+    private javax.swing.JLabel lblTotalVendas;
+    private javax.swing.JLabel lblUsuarioLogado;
+    private javax.swing.JLabel lblVendasTitulo;
     // End of variables declaration//GEN-END:variables
 }

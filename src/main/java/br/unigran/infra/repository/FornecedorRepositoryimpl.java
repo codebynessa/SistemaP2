@@ -14,7 +14,6 @@ import java.util.List;
  */
 
 public class FornecedorRepositoryimpl implements br.unigran.domain.repositories.FornecedorRepository {
-
     JPAUtil dao = JPAUtil.getInstace();
 
     @Override

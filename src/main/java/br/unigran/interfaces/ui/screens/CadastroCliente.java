@@ -3,15 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package br.unigran.interfaces.ui.screens;
+
 import br.unigran.application.dto.ClienteDTO;
 import br.unigran.interfaces.controllers.ClienteController;
+
 /**
  *
  * @author vanes
  */
 public class CadastroCliente extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroCliente.class.getName());
+    private Integer idCliente;
 
     /**
      * Creates new form CadastroCliente
@@ -19,6 +22,31 @@ public class CadastroCliente extends javax.swing.JDialog {
     public CadastroCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.idCliente = null;
+        setTitle("Cadastro de Cliente");
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(new java.awt.Color(232, 236, 241));
+
+        btnSalvar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }
+
+    public CadastroCliente(java.awt.Frame parent, boolean modal, Integer idCliente, String nome, String cpf, String telefone) {
+        super(parent, modal);
+        initComponents();
+
+        this.idCliente = idCliente;
+
+        txtNome.setText(nome);
+        txtCPF.setText(cpf);
+        txtNome1.setText(telefone);
+
+        setTitle("Editar Cliente");
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(new java.awt.Color(232, 236, 241));
+
+        btnSalvar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }
 
     /**
@@ -36,6 +64,8 @@ public class CadastroCliente extends javax.swing.JDialog {
         btnSalvar1 = new javax.swing.JButton();
         txtTelefone = new javax.swing.JLabel();
         txtNome1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,51 +83,58 @@ public class CadastroCliente extends javax.swing.JDialog {
 
         txtNome1.addActionListener(this::txtNome1ActionPerformed);
 
+        jLabel2.setText("CPF:");
+
+        txtCPF.addActionListener(this::txtCPFActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(134, 134, 134))
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtTelefone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(101, 101, 101)
-                    .addComponent(btnSalvar1)
-                    .addContainerGap(227, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNome))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(txtTelefone)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(btnSalvar1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancelar)
+                                .addGap(36, 36, 36)))))
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone)
                     .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(btnCancelar)
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(123, 123, 123)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar1)
-                    .addContainerGap(154, Short.MAX_VALUE)))
+                    .addComponent(btnCancelar))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,25 +148,42 @@ public class CadastroCliente extends javax.swing.JDialog {
 dispose();    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-try {
-ClienteDTO dto = new ClienteDTO(
-        txtNome.getText(),
-        txtTelefone.getText()
-);
-    ClienteController.salvar(dto);
+        try {
+            if (idCliente == null) {
+                ClienteDTO dto = new ClienteDTO(
+                        txtNome.getText(),
+                        txtCPF.getText(),
+                        txtNome1.getText()
+                );
 
-    javax.swing.JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso");
+                ClienteController.salvar(dto);
+                javax.swing.JOptionPane.showMessageDialog(this, "Cliente salvo com sucesso");
+            } else {
+                ClienteDTO dto = new ClienteDTO(
+                        idCliente,
+                        txtNome.getText(),
+                        txtCPF.getText(),
+                        txtNome1.getText()
+                );
 
-    txtNome.setText("");
-txtTelefone.setText("");
+                ClienteController.atualizar(dto);
+                javax.swing.JOptionPane.showMessageDialog(this, "Cliente atualizado com sucesso");
+            }
 
-} catch (Exception e) {
-    javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+            dispose();
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+
 }    }//GEN-LAST:event_btnSalvar1ActionPerformed
 
     private void txtNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNome1ActionPerformed
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +226,8 @@ txtTelefone.setText("");
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNome1;
     private javax.swing.JLabel txtTelefone;

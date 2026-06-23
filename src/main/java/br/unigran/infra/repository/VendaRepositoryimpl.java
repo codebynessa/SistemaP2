@@ -39,6 +39,5 @@ public class VendaRepositoryimpl implements VendaRepository {
 
     @Override
     public List<Venda> listarTodos() {
-        return dao.listar("From Venda", null);
-    }
+return dao.listar("SELECT v FROM Venda v", null);    }
 }

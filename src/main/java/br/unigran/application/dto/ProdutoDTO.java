@@ -12,6 +12,7 @@ import br.unigran.domain.entity.Produto;
  * @author vanes
  */
 public class ProdutoDTO {
+   public Integer id;
     public String nomeProduto;
     public String descricaoProduto;
     public String precoProduto;
@@ -26,9 +27,19 @@ public class ProdutoDTO {
         this.estoque = estoque;
     }
 
+    public ProdutoDTO(Integer id, String nomeProduto, String descricaoProduto, String precoProduto, String idCategoria, String estoque) {
+        this.id = id;
+        this.nomeProduto = nomeProduto;
+        this.descricaoProduto = descricaoProduto;
+        this.precoProduto = precoProduto;
+        this.idCategoria = idCategoria;
+        this.estoque = estoque;
+    }
+
     public Produto build() {
         Produto produto = new Produto();
 
+        produto.setId(id);
         produto.setNome(nomeProduto);
         produto.setDescricao(descricaoProduto);
         produto.setPrecoVenda(Double.valueOf(precoProduto));

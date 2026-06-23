@@ -5,6 +5,9 @@
 package br.unigran.application.dto;
 
 import br.unigran.domain.entity.Usuario;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -12,25 +15,43 @@ import br.unigran.domain.entity.Usuario;
  */
 public class UsuarioDTO {
     
- public String nomeUsuario;
+
+    public String nomeUsuario;
     public String loginUsuario;
     public String senhaUsuario;
 
     public UsuarioDTO(String nomeUsuario, String loginUsuario, String senhaUsuario) {
-
         this.nomeUsuario = nomeUsuario;
         this.loginUsuario = loginUsuario;
         this.senhaUsuario = senhaUsuario;
     }
 
     public Usuario build() {
-
         Usuario usuario = new Usuario();
 
         usuario.setNome(nomeUsuario);
         usuario.setLogin(loginUsuario);
-        usuario.setSenha(senhaUsuario);
+        usuario.setSenha(generateHash(senhaUsuario));
 
         return usuario;
+    }
+
+    private String generateHash(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(password.getBytes());
+
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+
+            return hashtext;
+
+        } catch (NoSuchAlgorithmException ex) {
+            return "";
+        }
     }
 }

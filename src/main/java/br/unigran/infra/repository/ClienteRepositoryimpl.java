@@ -12,7 +12,6 @@ import java.util.List;
  *
  * @author vanes
  */
-
 public class ClienteRepositoryimpl implements br.unigran.domain.repositories.ClienteRepository {
 
     JPAUtil dao = JPAUtil.getInstace();
@@ -41,4 +40,5 @@ public class ClienteRepositoryimpl implements br.unigran.domain.repositories.Cli
     public Object findByID(Integer id) {
         return dao.findById(id, Cliente.class);
     }
+
 }

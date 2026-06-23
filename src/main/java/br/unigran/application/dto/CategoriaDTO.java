@@ -12,9 +12,15 @@ import br.unigran.domain.entity.Categoria;
  */
 public class CategoriaDTO {
     
+    public Integer id;
     public String nomeCategoria;
 
     public CategoriaDTO(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
+
+    public CategoriaDTO(Integer id, String nomeCategoria) {
+        this.id = id;
         this.nomeCategoria = nomeCategoria;
     }
 
@@ -22,6 +28,7 @@ public class CategoriaDTO {
 
         Categoria categoria = new Categoria();
 
+        categoria.setId(id);
         categoria.setNome(nomeCategoria);
 
         return categoria;

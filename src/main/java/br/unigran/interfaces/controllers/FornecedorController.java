@@ -1,27 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.unigran.interfaces.controllers;
 
 import br.unigran.application.dto.FornecedorDTO;
 import br.unigran.application.usecase.GerenciarFornecedorUC;
+import br.unigran.domain.entity.Fornecedor;
 import java.util.List;
-
-/**
- *
- * @author vanes
- */
 
 public class FornecedorController {
 
-   static GerenciarFornecedorUC uc = new GerenciarFornecedorUC();
+    private static GerenciarFornecedorUC gerenciarFornecedor = new GerenciarFornecedorUC();
 
     public static void salvar(FornecedorDTO dto) throws Exception {
-        uc.salvarFornecedor(dto.build());
+        gerenciarFornecedor.salvarFornecedor(dto.build());
     }
 
-    public static List listarTodos() {
-        return uc.listarTodos();
+    public static void editar(FornecedorDTO dto) throws Exception {
+        gerenciarFornecedor.atualizar(dto.build());
+    }
+
+    public static void excluir(Integer id) throws Exception {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setId(id);
+
+        gerenciarFornecedor.remover(fornecedor);
+    }
+
+    public static List<Fornecedor> listarTodos() {
+        return gerenciarFornecedor.listarTodos();
     }
 }

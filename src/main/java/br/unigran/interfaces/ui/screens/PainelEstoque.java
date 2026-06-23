@@ -9,6 +9,7 @@ import br.unigran.interfaces.controllers.MovimentacaoEstoqueController;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vanes
@@ -20,46 +21,56 @@ public class PainelEstoque extends javax.swing.JPanel {
      */
     public PainelEstoque() {
         initComponents();
+
+        setBackground(new java.awt.Color(232, 236, 241));
+
+        tblEstoque.setRowHeight(26);
+        tblEstoque.setShowGrid(false);
+        tblEstoque.setSelectionBackground(new java.awt.Color(204, 229, 255));
+        tblEstoque.setSelectionForeground(java.awt.Color.BLACK);
+
         carregarTabela();
     }
-private void carregarTabela() {
-    DefaultTableModel modelo = new DefaultTableModel();
 
-    modelo.addColumn("ID");
-    modelo.addColumn("Produto");
-    modelo.addColumn("Tipo");
-    modelo.addColumn("Quantidade");
-    modelo.addColumn("Data");
+    private void carregarTabela() {
+        DefaultTableModel modelo = new DefaultTableModel();
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        modelo.addColumn("ID");
+        modelo.addColumn("Produto");
+        modelo.addColumn("Tipo");
+        modelo.addColumn("Quantidade");
+        modelo.addColumn("Data");
 
-    List<MovimentacaoEstoque> movimentacoes =
-            MovimentacaoEstoqueController.listarTodos();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    for (MovimentacaoEstoque m : movimentacoes) {
-        String produto = "";
+        List<MovimentacaoEstoque> movimentacoes
+                = MovimentacaoEstoqueController.listarTodos();
 
-        if (m.getProduto() != null) {
-            produto = m.getProduto().getNome();
+        for (MovimentacaoEstoque m : movimentacoes) {
+            String produto = "";
+
+            if (m.getProduto() != null) {
+                produto = m.getProduto().getNome();
+            }
+
+            String data = "";
+
+            if (m.getDataMovimentacao() != null) {
+                data = sdf.format(m.getDataMovimentacao());
+            }
+
+            modelo.addRow(new Object[]{
+                m.getId(),
+                produto,
+                m.getTipo(),
+                m.getQuantidade(),
+                data
+            });
         }
 
-        String data = "";
-
-        if (m.getDataMovimentacao() != null) {
-            data = sdf.format(m.getDataMovimentacao());
-        }
-
-        modelo.addRow(new Object[]{
-            m.getId(),
-            produto,
-            m.getTipo(),
-            m.getQuantidade(),
-            data
-        });
+        tblEstoque.setModel(modelo);
     }
 
-    tblEstoque.setModel(modelo);
-}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,20 +85,24 @@ private void carregarTabela() {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstoque = new javax.swing.JTable();
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Movimentações de Estoque");
 
-        btnNovaMovimentaca.setText("Nova Movimentação");
+        btnNovaMovimentaca.setBackground(new java.awt.Color(0, 102, 255));
+        btnNovaMovimentaca.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovaMovimentaca.setText("+ Nova Movimentação");
+        btnNovaMovimentaca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovaMovimentaca.addActionListener(this::btnNovaMovimentacaActionPerformed);
 
         tblEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Produto", "Tipo", "Quantidade", "Data"
             }
         ));
         jScrollPane1.setViewportView(tblEstoque);
@@ -97,41 +112,34 @@ private void carregarTabela() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel1)
-                .addContainerGap(136, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNovaMovimentaca)
-                .addGap(15, 15, 15))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(12, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNovaMovimentaca)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(btnNovaMovimentaca)
-                .addContainerGap(223, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(87, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnNovaMovimentaca))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovaMovimentacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaMovimentacaActionPerformed
-    CadastroMovimentacaoEstoque tela = new CadastroMovimentacaoEstoque(null, true);
-    tela.setLocationRelativeTo(null);
-    tela.setVisible(true);
+        CadastroMovimentacaoEstoque tela = new CadastroMovimentacaoEstoque(null, true);
+        tela.setLocationRelativeTo(null);
+        tela.setVisible(true);
 
-    carregarTabela();
+        carregarTabela();
     }//GEN-LAST:event_btnNovaMovimentacaActionPerformed
 
 

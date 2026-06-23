@@ -41,4 +41,14 @@ public class GerenciarCategoriaUC {
             throw new Exception("Id vazio");
         }
     }
+
+    public String remover(Categoria categoria) throws Exception {
+        if (categoria.getId() == null) {
+            throw new Exception("Id vazio");
+        }
+
+        repository.remover(categoria);
+
+        return "Categoria removida com sucesso";
+    }
 }

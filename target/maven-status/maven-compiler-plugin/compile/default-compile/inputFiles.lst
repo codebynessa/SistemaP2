@@ -11,10 +11,13 @@ C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\ItemEntradaRepositoryimpl.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\PagamentoController.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\dto\MovimentacaoEstoqueDTO.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\dto\VendaDTO.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\ClienteRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarVendaUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\CadastroProduto.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarClienteUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\MovimentacaoEstoqueRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\VendaController.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\CategoriaRepositoryimpl.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\EntradaProdutoRepository.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\CadastroCliente.java
@@ -31,12 +34,14 @@ C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\PainelTipoPermissoes.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarItemEntradaUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\ProdutoRepository.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\CadastroVenda.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Usuario.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\CadastroUsuario.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\CadastroEntradaProduto.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\TipoPermissoes.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\FornecedorRepositoryimpl.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\Pagamento.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\RelatoriosPanel.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\repositories\PermissaoUsuarioRepository.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\PainelPermissaoUsuario.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarEntradaProdutoUC.java
@@ -73,6 +78,7 @@ C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\UsuarioRepositoryimpl.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\TelaLogin.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\dto\LoginDTO.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\PainelPagamento.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\ClienteController.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\dto\ClienteDTO.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\PermissaoUsuarioController.java
@@ -89,6 +95,7 @@ C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\application\usecase\GerenciarPermissaoUsuarioUC.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\domain\entity\MovimentacaoEstoque.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\infra\repository\MovimentacaoEstoqueRepositoryimpl.java
+C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\PainelVendas.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\ui\screens\CadastroCategoria.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\FornecedorController.java
 C:\Users\vanes\OneDrive\Documents\NetBeansProjects\SistemaP2 - Vanessa\src\main\java\br\unigran\interfaces\controllers\CategoriaController.java

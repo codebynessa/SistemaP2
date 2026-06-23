@@ -11,7 +11,8 @@ import br.unigran.domain.entity.Usuario;
  * @author vanes
  */
 public class Sessao {
- private Usuario usuario;
+ 
+    private Usuario usuario;
     private static Sessao sessao;
 
     private Sessao() {
@@ -32,7 +33,11 @@ public class Sessao {
         this.usuario = usuario;
     }
 
-    public Boolean estaLogado() {
+    public void limpar() {
+        this.usuario = null;
+    }
+
+    public boolean estaLogado() {
         return usuario != null;
     }
 }

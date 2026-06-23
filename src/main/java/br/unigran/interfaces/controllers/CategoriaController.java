@@ -13,7 +13,6 @@ import java.util.List;
  * @author vanes
  */
 public class CategoriaController {
-    
 
     static GerenciarCategoriaUC uc = new GerenciarCategoriaUC();
 
@@ -21,7 +20,16 @@ public class CategoriaController {
 
         uc.salvarCategoria(dto.build());
     }
-        public static List listarTodos() throws Exception {
+
+    public static List listarTodos() throws Exception {
         return uc.listarTodos();
+    }
+
+    public static void atualizar(CategoriaDTO dto) throws Exception {
+        uc.atualizar(dto.build());
+    }
+
+    public static void remover(br.unigran.domain.entity.Categoria categoria) throws Exception {
+        uc.remover(categoria);
     }
 }

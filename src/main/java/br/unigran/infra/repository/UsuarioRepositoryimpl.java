@@ -41,11 +41,11 @@ public class UsuarioRepositoryimpl implements UsuarioRepository {
     public List<Usuario> listarTodos() {
         return dao.listar("SELECT u FROM Usuario u", null);
     }
-    @Override
+@Override
 public Usuario buscarPorLogin(String login) {
     List<Usuario> usuarios = dao.listar(
-            "SELECT u FROM Usuario u WHERE u.login = :login",
-            new String[]{"login", login}
+            "SELECT u FROM Usuario u WHERE u.login = '" + login + "'",
+            null
     );
 
     if (usuarios == null || usuarios.isEmpty()) {
